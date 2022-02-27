@@ -1,0 +1,36 @@
+
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color:rgb(204, 199, 199)
+}
+.principal{
+    display: flex;
+    border: 1px solid red;
+    height: 500px;
+}
+.sidebar{
+    background-color: aqua;
+    border: 1px solid green;
+}
+.sidebar:hover{
+     border: 1px solid coral;
+}
+   
+.details {
+    border: 1px solid blue;
+    flex-grow: 1;
+}
+
+.week {
+    display: flex;
+    justify-content: space-evenly;
+}
+.day {
+    background-color: aquamarine;
+    height: 55px;
+    
+}
