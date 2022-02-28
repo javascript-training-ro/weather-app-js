@@ -9,12 +9,14 @@ body {
 }
 .principal{
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 500px;
 }
 .sidebar{
-    background-color: aqua;
+    background-color: rgb(214, 250, 250);
     border: 1px solid green;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px ;
 }
 .sidebar:hover{
      border: 1px solid coral;
@@ -31,6 +33,14 @@ body {
 }
 .day {
     background-color: aquamarine;
-    height: 55px;
+    height: 121px;
+    width: 72px;
+    text-align: center;
+    border-radius: 18px;
     
+}
+#temp{
+    background-color: blueviolet;
+    height: 150px;
+    width: 100px;
 }

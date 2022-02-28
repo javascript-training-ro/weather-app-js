@@ -5,6 +5,7 @@
 <title>Weather Project</title>
 
 <link rel="stylesheet" href="myStilesheets.css"/>
+
    
 </head>
         <h1>The weather</h1>      
@@ -15,7 +16,13 @@
             <div class="sidebar">
                 your city 
                 <input type="text" id="city"/> 
-                <button>Find</button>
+                <button onclick="search()">Find</button>
+                <img src="#" id="icon" alt="">
+                <div id="temp"></div>
+                <div id="day"></div>
+                <div id="cloudy"></div>
+                <div id="rain"></div>
+            
              </div>
             <div class="details">
                     <div class="week">
@@ -32,14 +39,7 @@
             
     
        
-    
-   
-
-   <script>
-       
-     // document.getElementById("sdfsd").innerText = temperture
-   </script>
-
+ <script type="text/javascript" src="js.js"></script>  
 
    
 </body>
