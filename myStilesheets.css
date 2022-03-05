@@ -136,12 +136,12 @@ body {
     filter:alpha (opacity=50);
 }
 
-#week{
+#weekBoton{
     margin-right: 322px;
 }
 
 
-#today{
+#todayBoton{
     margin-right: 10px;
 }
 .minMax{
@@ -152,4 +152,27 @@ body {
     font-weight: bold;
     font-size: 12px;
     padding-top: 10px;
+}
+.highlights{
+    display: flex;
+    flex-wrap: wrap;
+ 
+    margin-top: 20px;
+}
+.status{
+    background-color: rgb(228, 217, 202);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 140px;
+    padding: 10px;
+    margin: 10px;
+    justify-content: center;
+}
+#indiceUV{
+    font-size: 1cm;
+}
+#humidity{
+    font-size: 1cm;
 }

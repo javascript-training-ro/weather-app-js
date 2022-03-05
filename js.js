@@ -4,9 +4,10 @@ function getForecastData(lat, lon) {
     fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=7a13b39d6e8e0ad7bc6d10fed36b42d1&units=metric")
         .then(function(res) {
             return res.json();
+            
         })
         .then(function(data) {
-          
+          console.log(data);
             const z = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
             for (var i=1; i<data.daily.length; i++ ){
                 var numeZi = z[(new Date(data.daily[i].dt * 1000)).getDay()];               
@@ -16,7 +17,7 @@ function getForecastData(lat, lon) {
                 var nameElement = document.createElement("div");
                 var maxElement = document.createElement("div");
                 var minElement = document.createElement("div");
-                 var minMax = document.createElement("div");
+                var minMax = document.createElement("div");
                 
                 maxElement.innerText = Math.round(data.daily[i].temp.max);
                 maxElement.className = "max";
@@ -24,6 +25,37 @@ function getForecastData(lat, lon) {
                 nameElement.className = "name";
                 minElement.innerText = Math.round(data.daily[i].temp.min);
                 minElement.className = "min";
+
+                var indiceuv = document.createElement("div");
+                var wind = document.createElement("div");
+                var sr = document.createElement("div");
+                var ss = document.createElement("div");
+                var hum = document.createElement("div");
+                var vis = document.createElement("div");
+                var air = document.createElement("div");
+                indiceuv.id = "indiceUV";
+                wind.id = "windSpeed";
+                sr.id = "sunrise";
+                ss.id = "sunset";
+                hum.id = "humidity";
+                vis.id = "visibility";
+                air.id = "airQ"
+                div1.appendChild(indiceuv);
+                div2.appendChild(wind);               
+                div3.appendChild(sr);
+                div3.appendChild(ss);
+                div4.appendChild(hum);
+                div5.appendChild(vis);
+                div6.appendChild(air);
+                document.getElementById("indiceUV").innerText = data.daily[0].uvi;
+                document.getElementById("windSpeed").innerText = Math.round((data.daily[0].wind_speed * 3600) / 1000)  + " Km/h";
+                document.getElementById("sunrise").innerText = (new Date(data.daily[0].sunrise * 1000)).getHours() + ":" + (new Date(data.daily[0].sunrise * 1000)).getMinutes();
+                document.getElementById("sunset").innerText = (new Date(data.daily[0].sunset * 1000)).getHours() + ":" + (new Date(data.daily[0].sunset * 1000)).getMinutes();
+                document.getElementById("humidity").innerText = (data.daily[0].humidity) + "%";
+                document.getElementById("visibility").innerText = (data.current.visibility)/1000 + " Km";
+                document.getElementById("airQ").innerText = data.daily[i].dew_point;
+
+               
                 
                 var iconcod = data.daily[i].weather[0].icon;
                 var iconurl2 = "http://openweathermap.org/img/w/" + iconcod + ".png";
@@ -85,6 +117,8 @@ function search(){
             getForecastData(data.coord.lat, data.coord.lon);
 
             
+
+            
         })
         .catch(function(error) {
             console.log(error);
@@ -98,4 +132,8 @@ function faren(){
 function celsius(){
     document.getElementById("temp").innerText = temp +"\u2103";
     console.log(temp);
+}
+function day(){
+    document.getElementsByClassName("week").innerText = " nada ";
+    console.log(day())
 }
