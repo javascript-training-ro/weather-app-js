@@ -8,6 +8,8 @@ function getForecastData(lat, lon) {
         })
         .then(function(data) {
           console.log(data);
+             hourly = data.hourly[15].temp;
+          
             const z = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
             for (var i=1; i<data.daily.length; i++ ){
                 var numeZi = z[(new Date(data.daily[i].dt * 1000)).getDay()];               
@@ -26,35 +28,7 @@ function getForecastData(lat, lon) {
                 minElement.innerText = Math.round(data.daily[i].temp.min);
                 minElement.className = "min";
 
-                var indiceuv = document.createElement("div");
-                var wind = document.createElement("div");
-                var sr = document.createElement("div");
-                var ss = document.createElement("div");
-                var hum = document.createElement("div");
-                var vis = document.createElement("div");
-                var air = document.createElement("div");
-                indiceuv.id = "indiceUV";
-                wind.id = "windSpeed";
-                sr.id = "sunrise";
-                ss.id = "sunset";
-                hum.id = "humidity";
-                vis.id = "visibility";
-                air.id = "airQ"
-                div1.appendChild(indiceuv);
-                div2.appendChild(wind);               
-                div3.appendChild(sr);
-                div3.appendChild(ss);
-                div4.appendChild(hum);
-                div5.appendChild(vis);
-                div6.appendChild(air);
-                document.getElementById("indiceUV").innerText = data.daily[0].uvi;
-                document.getElementById("windSpeed").innerText = Math.round((data.daily[0].wind_speed * 3600) / 1000)  + " Km/h";
-                document.getElementById("sunrise").innerText = (new Date(data.daily[0].sunrise * 1000)).getHours() + ":" + (new Date(data.daily[0].sunrise * 1000)).getMinutes();
-                document.getElementById("sunset").innerText = (new Date(data.daily[0].sunset * 1000)).getHours() + ":" + (new Date(data.daily[0].sunset * 1000)).getMinutes();
-                document.getElementById("humidity").innerText = (data.daily[0].humidity) + "%";
-                document.getElementById("visibility").innerText = (data.current.visibility)/1000 + " Km";
-                document.getElementById("airQ").innerText = data.daily[i].dew_point;
-
+               
                
                 
                 var iconcod = data.daily[i].weather[0].icon;
@@ -71,7 +45,39 @@ function getForecastData(lat, lon) {
 
                 dayElement.className = "day";
                 document.getElementsByClassName("week")[0].appendChild(dayElement);
-            }            
+            }
+
+
+            var indiceuv = document.createElement("div");
+            var wind = document.createElement("div");
+            var sr = document.createElement("div");
+            var ss = document.createElement("div");
+            var hum = document.createElement("div");
+            var vis = document.createElement("div");
+            var air = document.createElement("div");
+            
+            indiceuv.id = "indiceUV";               
+            wind.id = "windSpeed";
+            sr.id = "sunrise";
+            ss.id = "sunset";
+            hum.id = "humidity";
+            vis.id = "visibility";
+            air.id = "airQ"
+            div1.appendChild(indiceuv);
+            div2.appendChild(wind);               
+            div3.appendChild(sr);
+            div3.appendChild(ss);
+            div4.appendChild(hum);
+            div5.appendChild(vis);
+            div6.appendChild(air);
+            document.getElementById("indiceUV").innerText = data.daily[0].uvi;
+            document.getElementById("windSpeed").innerText = Math.round((data.daily[0].wind_speed * 3600) / 1000)  + " Km/h";
+            document.getElementById("sunrise").innerText = (new Date(data.daily[0].sunrise * 1000)).getHours() + ":" + (new Date(data.daily[0].sunrise * 1000)).getMinutes();
+            document.getElementById("sunset").innerText = (new Date(data.daily[0].sunset * 1000)).getHours() + ":" + (new Date(data.daily[0].sunset * 1000)).getMinutes();
+            document.getElementById("humidity").innerText = (data.daily[0].humidity) + "%";
+            document.getElementById("visibility").innerText = (data.current.visibility)/1000 + " Km";
+            document.getElementById("airQ").innerText = data.daily[0].dew_point;
+        
         })
         .catch(function(error) {
             console.log(error);
@@ -79,7 +85,7 @@ function getForecastData(lat, lon) {
   
 }
 
-           
+var hourly;        
 var temp;      
 
 function search(){
@@ -126,14 +132,23 @@ function search(){
 }
 function faren(){
              var fahrenheit=Math.round((temp*9)/5)+32;
-             document.getElementById("temp").innerText = fahrenheit + " \u2109";
+             document.getElementById("temp").innerHTML = fahrenheit + " \u2109 ";
                   
 }
 function celsius(){
-    document.getElementById("temp").innerText = temp +"\u2103";
-    console.log(temp);
+    document.getElementById("temp").innerText = temp +"\u2103" ;
+    
 }
 function day(){
-    document.getElementsByClassName("week").innerText = " nada ";
-    console.log(day())
+    
+    document.getElementById("saptamana").style.display = 'none';
+    document.getElementById("today").style.display = "flex";
+    document.getElementById("today").innerText = hourly;
+    console.log(hourly);
+
+}
+
+function week() {
+    document.getElementById("saptamana").style.display = 'flex';
+    document.getElementById("today").style.display = "none";
 }
