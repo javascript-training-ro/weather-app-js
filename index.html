@@ -17,6 +17,7 @@
                 INSERT YOUR CITY 
                 <input type="text" id="city"/> 
                 <button onclick="search()">Find</button>
+                <button onclick="getLocation()">Your Position</button>
                 <img src="#" id="icon" alt="">
                 <div id="temp"></div>
                 <div id="day"></div>
@@ -36,14 +37,14 @@
                     </div>
                     <div id="today" ></div>
                     <br>
-                    <h1>          Today highlights</h1>
+                    <p id="text">        Today highlights </p>
                     <div class="highlights">
-                           <div class = "status" id="div1">UV Index</div>
-                           <div class = "status" id="div2">Wind Status</div>
-                           <div class = "status" id="div3">Sunrise & Sunset</div>
-                           <div class = "status" id="div4">Humidity</div>
-                           <div class = "status" id="div5">Visibility</div>
-                           <div class = "status" id="div6">Air Quality</div>
+                           <div class="status" id="div1"><p class="textH">UV Index</p><div id="container"><div id="progress"></div></div></div>
+                           <div class="status" id="div2"><p class="textH">Wind Status</p> <br> <p id="direccion"></p></div>
+                           <div class="status" id="div3"><p class="textH">Sunrise & Sunset</p></div>
+                           <div class="status" id="div4"><p class="textH">Humidity</p></div>
+                           <div class="status" id="div5"><p class="textH">Visibility</p></div>
+                           <div class="status" id="div6"><p class="textH">Air Quality</p></div>
                     </div>
             </div>
          </div> 
