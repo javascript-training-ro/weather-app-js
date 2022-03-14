@@ -3,6 +3,12 @@
 h1 {
     text-align: center;
 }
+#titulo{
+    font-family: ui-sans-serif;
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
 
 body {
     background-color:#D6D7DA;
@@ -10,11 +16,12 @@ body {
 .principal{
     display: flex;
     /* border: 1px solid red; */
-    height: 500px;
-    max-width: 770px;
+    height: 538px;
+    max-width: 760px;
     margin: 0 auto;
+    margin-top: 42px;
+
 }
-    
 
 .sidebar{
     display: flex;
@@ -48,7 +55,7 @@ body {
   }
    
 .details {
-    background-color: #efeff2;
+    background-color: rgb(246, 246, 248);
     /* border: 1px solid blue; */
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -112,21 +119,26 @@ body {
 #text{
     font-size: small;
     font-family: sans-serif ;
+     margin: 0px;
     margin-left: 20px;
+    font-weight: bold;
+   
 }
 .textH{
     font-size: 15px;
-    margin-top: 5px;
+    margin: 0px;
+    font-weight: bold;
 }
 #temp{
     background-color: rgba(46, 42, 49, 0);
     height: 80px;
     width: 200px;
-    font-size: 70px;
+    font-size: 40px;
     text-align: center;
     border-radius: 15px;
     margin: 5px;
     align-items: center;
+    font-family: sans-serif;
 }
 #icon{
     height: 120px;
@@ -201,43 +213,142 @@ body {
     display: flex;
     flex-wrap: wrap;
  
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .status{
     background-color: rgb(255 255 255);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    
+    height: 100px;
     flex: 1 140px;
     padding: 10px;
     margin: 10px;
     justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
 }
 #indiceUV{
-    font-size: 1cm;
+    font-size: 30px;
+    font-family: sans-serif;
 }
 #humidity{
-    font-size: 1cm;
+    font-size: 30px;
+    font-family: sans-serif;
+    top: -25px;
+    position: relative;
+    
 }
 #today{
     justify-content: space-evenly;
 }
 #direction{
-    width: 70px;
+    width: 40px;
+    position: relative;
+    left: -30px;
 }
 #container{
     width: 147px;
     height: 20px;
     background-color: rgb(240, 236, 236);
-    border-radius: 6px;
+    border-radius: 30px;
 }
 #progress{
     width: 147px;
     height: 20px;
-    background-color: #FFBF5E;
-    border-radius: 6px;
+    /* background-color: #FFBF5E; */
+    background: linear-gradient(90deg, rgb(27, 245, 16), rgb(253, 14, 14));
+    border-radius: 30px;
+    -moz-border-radius :30px;
+
 }
 #direccion{
+    margin-left: 80px;
+    padding-left: 20px;
+    height: 19px;
+    width: 40px;
+    margin-top: 60px;
+    margin-bottom: 0px;
+    position: absolute;
+    
+}
+
+#div2{
+    display: flex;
+}
+#arrow1{
+    width: 40px;
+    position: relative;
+    right: 50px;
+    transform: rotate(270deg);
+}
+#arrow2{
+    width: 40px;
+    position: relative;
+    right: 50px;
+    transform: rotate(90deg);
+}
+#sunrise{
+    position: absolute;  
+    margin-top: -21px;
+
+}
+#sunset{
+    position: absolute;    
+    margin-bottom: -66px;
+}
+#humBar{   
+    height: 21px;
+    width: 83px;
+    transform: rotate(90deg);
+    position: relative;
+    left: 59px;
+    top: 10px;
+
+    bottom: 16px;
+    border-radius: 30px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(94, 93, 93);
+    background-color: #ebe8ff;
+    transform: rotate(270deg);
+}
+#div4{
+    
+    display: flex;
+}
+#humBarin{
+    background-color: rgb(102, 102, 208);
+    height: 17px;
+    max-width:  80px;
+    position: relative;
+    left: 2px;
+    top:2px;
+    bottom: 35px;
+    border-radius: 30px;
+    
+}
+#search{
+    width: 40px;
+    position: relative;
+    bottom: 33px;
+}
+#lupa{
+    width: 17px;
+    position: relative;
+    bottom: 38px;
+    left: 59px;
+}
+
+#city {
+    width: 130px;
+}
+#humStatus{
     margin: 0px;
+    position: relative;
+    top: 69px;
+    right: 3px;
+    font-weight: bold;
+    font-size: smaller;
 }

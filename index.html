@@ -8,16 +8,18 @@
 
    
 </head>
-        <h1>The weather</h1>      
+        <h1></h1>      
 <body>
 
     
         <div class="principal"> 
             <div class="sidebar">
-                INSERT YOUR CITY 
-                <input type="text" id="city"/> 
-                <button onclick="search()">Find</button>
-                <button onclick="getLocation()">Your Position</button>
+                <p id="titulo">INSERT YOUR CITY</p> 
+                <input type="text" id="city" /> 
+                <img src="lupa.png" id="lupa" onclick="search()">
+                <!-- <button id="cautare" onclick="search()">Find</button> -->
+                <img src="gps.png" id="search" onclick="getLocation()">
+                <!-- <button onclick="getLocation()">Your Position</button> -->
                 <img src="#" id="icon" alt="">
                 <div id="temp"></div>
                 <div id="day"></div>
@@ -42,7 +44,8 @@
                            <div class="status" id="div1"><p class="textH">UV Index</p><div id="container"><div id="progress"></div></div></div>
                            <div class="status" id="div2"><p class="textH">Wind Status</p> <br> <p id="direccion"></p></div>
                            <div class="status" id="div3"><p class="textH">Sunrise & Sunset</p></div>
-                           <div class="status" id="div4"><p class="textH">Humidity</p></div>
+                           <div class="status" id="div4"><p class="textH">Humidity</p><p id="humStatus">ç</p><div id="humBar"><div id="humBarin"></div>         
+                                            </div></div>
                            <div class="status" id="div5"><p class="textH">Visibility</p></div>
                            <div class="status" id="div6"><p class="textH">Air Quality</p></div>
                     </div>

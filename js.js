@@ -1,6 +1,7 @@
    
 document.getElementById("city").value = localStorage.getItem("orasul");
-console.log('aici');
+
+
 
 function getForecastData(lat, lon) {
     fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=7a13b39d6e8e0ad7bc6d10fed36b42d1&units=metric")
@@ -76,39 +77,60 @@ function getForecastData(lat, lon) {
             var indiceuv = document.createElement("div");
             var wind = document.createElement("div");
             var windDirection = document.createElement("img");
+            var arrow1 = document.createElement("img");
+            var arrow2 = document.createElement("img");
             var sr = document.createElement("div");
             var ss = document.createElement("div");
             var hum = document.createElement("div");
             var vis = document.createElement("div");
-            var air = document.createElement("div");            
-            indiceuv.id = "indiceUV";         
+            var air = document.createElement("div");
+                        
+            indiceuv.id = "indiceUV";
+                     
             wind.id = "windSpeed";
             windDirection.id = "direction";
             windDirection.src = "direction.png";
+            arrow1.src = "arrow.png"; 
+            arrow1.id = "arrow1";
+            arrow2.id = "arrow2";
+            arrow2.src = "arrow.png";
             windDirection.style.transform = "rotate(" + data.current.wind_deg + "deg)";
             sr.id = "sunrise";
             ss.id = "sunset";
             hum.id = "humidity";
             vis.id = "visibility";
             air.id = "airQ"
+
+
             div1.appendChild(indiceuv);
-            div2.appendChild(windDirection);            
             div2.appendChild(wind);
+            div2.appendChild(windDirection);            
             div3.appendChild(sr);
+            div3.appendChild(arrow1);
+            div3.appendChild(arrow2);
             div3.appendChild(ss);
             div4.appendChild(hum);
             div5.appendChild(vis);
             div6.appendChild(air);
-
+            
             document.getElementById("indiceUV").innerText = data.daily[0].uvi;
-            document.getElementById("progress").style = "width:" + ((data.daily[0].uvi)*7) + "%";
+            document.getElementById("progress").style = "width:" + (data.daily[0].uvi*9) + "%";
+            // document.getElementById("progress").style = "width:" + (data.daily[0].uvi*9) + "%";
             document.getElementById("windSpeed").innerText = Math.round((data.daily[0].wind_speed * 3600) / 1000)  + " Km/h";
             document.getElementById("sunrise").innerText = (new Date(data.daily[0].sunrise * 1000)).getHours() + ":" + (new Date(data.daily[0].sunrise * 1000)).getMinutes();
             document.getElementById("sunset").innerText = (new Date(data.daily[0].sunset * 1000)).getHours() + ":" + (new Date(data.daily[0].sunset * 1000)).getMinutes();
             document.getElementById("humidity").innerText = (data.daily[0].humidity) + "%";
+            document.getElementById("humBarin").style = "width:" + (data.daily[0].humidity) + "%";
             document.getElementById("visibility").innerText = (data.current.visibility)/1000 + " Km";
             document.getElementById("airQ").innerText = data.daily[0].dew_point;
 
+            if (data.daily[0].humidity < 25 && data.daily[0].humidity > 1) {
+                document.getElementById("humStatus").innerText = "Too dry";
+            }else if (data.daily[0].humidity < 70 && data.daily[0].humidity > 25) {
+                document.getElementById("humStatus").innerText = "Confortable";
+            }else if (data.daily[0].humidity < 100 && data.daily[0].humidity > 70) {
+                document.getElementById("humStatus").innerText = "Too humyd";
+            }
             if (data.current.wind_deg < 23 && data.current.wind_deg > 123 ) {
                     document.getElementById("direccion").innerText = "N";
             }else if (data.current.wind_deg < 33.75 && data.current.wind_deg > 11.25 ){
@@ -149,17 +171,40 @@ function getForecastData(lat, lon) {
   
 }
 
-     
+
+
+document.addEventListener('keydown', apasa);
+         function apasa(e){
+            if(e.keyCode == 13){
+            //    document.getElementById('cautare').click();
+             search();
+            }
+         }
 
 function search(lat, long) {
     var ciudad = document.getElementById("city").value;
     localStorage.setItem("orasul", ciudad); 
 
-    console.log(ciudad); 
     
 
     document.getElementById("saptamana").innerText = "";
     document.getElementById("today").innerText = "";
+    var directionImage = document.getElementById("direction");
+    if (directionImage) {
+        directionImage.remove();
+    }
+    var speedText = document.getElementById("windSpeed");
+    if (speedText) {
+        speedText.remove();
+    }
+    var srImage = document.getElementById("arrow1");
+    if (srImage){
+        srImage.remove();
+    }
+    var ssImage = document.getElementById("arrow2");
+    if (ssImage){
+        ssImage.remove();
+    }
 
     var searchQuery = '';
 
@@ -201,6 +246,7 @@ function getLocation(){
         console.log('eroare', error);
     });
 }
+     
 function faren(){
              var fahrenheit=Math.round((temp*9)/5)+32;
              document.getElementById("temp").innerHTML = fahrenheit + " \u2109 ";
